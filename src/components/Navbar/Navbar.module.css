@@ -1,0 +1,23 @@
+.navWrap {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+
+  font-size: 1.75rem;
+  color: white;
+  background: black;
+}
+.linkWrap{
+  display: flex;
+  column-gap: 2rem;
+  text-decoration: none;
+}
+
+.linkItem {
+  color: white;
+  text-decoration: none;
+  width: 150px;
+}
+.linkItem:hover {
+  color: blueviolet;
+}
