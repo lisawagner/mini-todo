@@ -1,0 +1,77 @@
+.sProjectTopBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sProjectTopBar button {
+  padding: 1em 2em;
+  background: blueviolet;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.sProjectTopBar button:hover {
+  color: blueviolet;
+  background: white;
+  border: 2px solid blueviolet;
+}
+.sProjectTaskWrap {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+.sProjectTaskItem {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 1rem;
+  row-gap: 1rem;
+}
+.taskItemWrap {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.25rem;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 2px solid black;
+}
+.taskItemHeader {
+  display: flex;
+  width: 100%;
+
+}
+.taskItemHeader button {
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  background: none;
+  border-radius: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.taskBtnsWrap {
+  display: flex;
+  /* justify-content: space-between; */
+  justify-content: center;
+  border-radius: 4px;
+  column-gap: 0.25rem;
+}
+.taskBtnsWrap button {
+  display: flex;
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  color: grey;
+  padding: 0.25rem;
+  border: 1px solid transparent;
+}
+.taskBtnsWrap button:hover {
+  color: blueviolet;
+  border: 1px solid blueviolet;
+  /* box-shadow: 2px 2px 10px blueviolet; */
+  border-radius: 4px;
+}

@@ -1,0 +1,40 @@
+.addNewWrap {
+  display: flex;
+  margin: 1rem auto;
+  width: 100%;
+  justify-content: center;
+}
+.addNewWrap form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.25rem;
+  width: 100%;
+}
+.addNewWrap input {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  
+}
+.addNewWrap button {
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  background: grey;
+}
+.addNewWrap button:hover {
+  color: grey;
+  background: white;
+  border: 2px solid grey;
+}
+/* MEDIA QUERIES */
+@media (min-width: 539px) {
+  .addNewWrap form {
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 0.25rem;
+  }
+}

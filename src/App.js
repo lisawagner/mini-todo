@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
+import SingleProject from './pages/SingleProject';
 
 function App() {
   
@@ -12,7 +13,8 @@ function App() {
           <Route element={<Layout />}>
             <Route index path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/projects" element={<Projects />} />
+            <Route path="/projects" element={<Projects />}/>
+            <Route path="/projects/:id" element={<SingleProject />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -1,23 +1,48 @@
 .navWrap {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 1rem;
 
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   color: white;
   background: black;
 }
-.linkWrap{
+.linkWrap {
   display: flex;
-  column-gap: 2rem;
+  column-gap: 0.5rem;
   text-decoration: none;
+}
+.firebaseIcon {
+  display: flex;
+  font-size: 2rem;
 }
 
 .linkItem {
   color: white;
   text-decoration: none;
-  width: 150px;
+  /* width: 150px; */
 }
 .linkItem:hover {
   color: blueviolet;
+}
+
+/* MEDIA QUERIES */
+@media (min-width: 539px) {
+  .navWrap {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+  
+    font-size: 1.75rem;
+  }
+  .linkWrap {
+    column-gap: 1rem;
+  }
+}
+@media (min-width: 767px) {
+
+  .linkWrap {
+    column-gap: 2rem;
+  }
 }
