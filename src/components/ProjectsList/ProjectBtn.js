@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import styles from './ProjectBtn.module.css'
 
-const ProjectBtn = ({ key, id, name }) => {
+const ProjectBtn = ({ id, name }) => {
 
   return (
     <div className={styles.projectsItemWrap}>
