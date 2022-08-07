@@ -26,6 +26,7 @@ const SingleProject = () => {
     history('/projects')
   }
  
+  
   const handleDeleteTask = async (task, id) => {
     // const docRef = doc(db, "Projects", "New Project/tasks/Alpha Task")
     const taskRef = `${id}/tasks${task}`
