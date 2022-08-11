@@ -11,7 +11,6 @@ const Home = () => {
       <h2>Tech</h2>
       <ul>
         <li>Firebase 9</li>
-        <li>React Firebase Hooks 5</li>
         <li>React 18</li>
         <li>React Router 6</li>
       </ul>

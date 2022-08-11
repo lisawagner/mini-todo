@@ -1,32 +1,26 @@
-import { doc, setDoc, collection } from "@firebase/firestore";
+import { addDoc, collection } from "@firebase/firestore";
 import { useRef } from "react";
 import { db } from "../../firebase/firebase";
 // styles
 import styles from './AddNew.module.css'
 
-export default function AddNew({ document, title }) {
-
+export default function AddProject({ database, title }) {
   const name = useRef();
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-    // API calls
-    // const docRef = doc(db, document, name.current.value);
-    // await setDoc(docRef, { name: name.current.value });
-    // console.log(docRef.id);
-
-    const docRef = doc(collection(db, document))
-    const data = {
+    const collectionRef = collection(db, database)
+    const payload = {
       name: name.current.value
     }
-    await setDoc(docRef, data)
-
+    
+    // grab document id
+    const docRef = await addDoc(collectionRef, payload)
+    console.log(docRef.id)
     e.target.reset();
     
   }
-
-  console.log();
 
   return (
     <div className={styles.addNewWrap}>

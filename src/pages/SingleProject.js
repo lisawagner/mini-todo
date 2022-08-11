@@ -1,85 +1,115 @@
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'
+import { useProjectContext } from '../context/ProjectContext';
 // firebase
-import { collection, doc, deleteDoc, updateDoc, getDoc, getDocs } from 'firebase/firestore';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { collection, doc, deleteDoc, updateDoc, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase/firebase';
 // components
-import AddNew from '../components/AddNew/AddNew'
 import TaskItem from '../components/TaskItem/TaskItem';
 // styles
 import styles from './SingleProject.module.css'
 import { TbTrash, TbPencil } from "react-icons/tb";
+import AddTask from '../components/AddNew/AddTask';
 
 // redo to use doc.id
 const SingleProject = () => {
+  const [tasks, setTasks] = useState(null)
+  const [isPending, setIsPending] = useState(false)
+  const [error, setError] = useState(null)
   const { id } = useParams()
   const history = useNavigate()
+  const { currentProject } = useProjectContext()
 
-  const path = `Projects/${id}/tasks`
-  const query = collection(db, path)
-  const [tasks, loading ] = useCollectionData(query);
-
-
-  const handleDelete = async (id) => {
-    const docRef = doc(db, "Projects", id)
+  const handleDelete = async () => {
+    const docRef = doc(db, 'projects', currentProject[0].id)
     await deleteDoc(docRef)
     history('/projects')
   }
- 
-  
-  const handleDeleteTask = async (task, id) => {
-    // const docRef = doc(db, "Projects", "New Project/tasks/Alpha Task")
-    const taskRef = `${id}/tasks${task}`
-    const docRef = doc(db, "Projects", taskRef)
+  const handleEdit = async () => {
+    const name = prompt("Enter new name: ", currentProject[0].name)
+    const docRef = doc(db, 'projects', currentProject[0].id)
+    const payload = { name }
+    await updateDoc(docRef, payload)
+    history('/projects')
+  }
+  const handleDeleteTask = async (taskId) => {
+    const docRef = doc(db, 'tasks', taskId)
     await deleteDoc(docRef)
-
-    console.log(taskRef);
   }
- // BUG - editing the task name changes the pathname, but the doc.id is the old name
-  const handleEditTask = async (task, id) => {
-    // const name = prompt("Enter new task: ")
-
-    // const taskRef = `${id}/tasks${task}`
-    // const docRef = doc(db, "Projects", taskRef)
-    // const payload = { name }
-
-    // await updateDoc(docRef, payload)
-
-    console.log('task: ' + task);
-    // console.log('handleEdit for: ' + taskRef);
-
-
+  const handleEditTask = async (taskId, taskName) => {
+    const name = prompt("Enter new task: ", taskName)
+    
+    const docRef = doc(db, 'tasks', taskId)
+    const payload = { name }
+    await updateDoc(docRef, payload, { merge: true })
   }
 
 
-  console.log('Path: ', path);
+  // Need to get 'tasks' collection!
+  useEffect(() => {
+    const ref = collection(db, 'tasks')
+    setIsPending(true)
+
+    // real time collection data
+    const unsubscribe = onSnapshot(ref, (snapshot) => {
+      if (snapshot.empty) {
+        setError('Sorry, there are no tasks to load at the moment')
+        setIsPending(false)
+      } else {
+        let results = []
+        snapshot.docs.forEach((doc) => {
+        results.push({id: doc.id, ...doc.data()})
+        })
+        setTasks(results)
+        setIsPending(false)
+      }
+    }, (err) => {
+      setError(err.message)
+      setIsPending(false)
+    })
+
+    return () => unsubscribe()
+    
+  }, [])
+
+  // create array of tasks assigned to project
+  const assignedTasks = tasks ? tasks.filter(task => {
+    let assignedToProject = false
+    if(currentProject[0].id === task.projectId) {
+      assignedToProject = true
+    }
+    return assignedToProject
+  }) : null
 
   return (
     <div className={styles.sProjectWrap}>
       <div className={styles.sProjectTopBar}>
         <h1>{id}</h1>
-        <div>
-          <button onClick={() => handleDelete(id)}>Delete Project</button>
+        <div className={styles.sProjectBtns}>
+          <button onClick={() => handleEdit()}>Edit Project</button>
+          <button onClick={() => handleDelete()}>Delete Project</button>
         </div>
         
       </div>
       <div className={styles.sProjectTaskWrap}>
         <div className={styles.sProjectTaskItem}>
-          {loading && "Loading..."}
-          {tasks?.map(task => (
+
+          {isPending && "Loading..."}
+          {error && <p className='error'>{error}</p>}
+          {assignedTasks?.map(task => (
             <div className={styles.taskItemWrap} key={Math.random()}>
-              <div className={styles.taskItemHeader}><TaskItem data={task.name}/></div>
+              <div className={styles.taskItemHeader}><TaskItem data={task.name} id={task.id}/></div>
               <div className={styles.taskBtnsWrap}>
-                <button onClick={() => handleDeleteTask(`/${task.name}`, id)} ><TbTrash /></button>
-                <button onClick={() => handleEditTask(`/${task.name}`, id)}><TbPencil /></button>
+                <button onClick={() => handleDeleteTask(task.id)} ><TbTrash /></button>
+                <button onClick={() => handleEditTask(task.id, task.name)}><TbPencil /></button>
               </div>
               
             </div>
           ))}
+
         </div>
         <div className={styles.addTaskWrap}>
-          {/* <AddNew path={path} title="Task" /> */}
-          <AddNew document="tasks" title="Task" />
+          <AddTask projectId={currentProject[0].id} database="tasks" title="Task" />
         </div>
         
       </div>

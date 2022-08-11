@@ -1,7 +1,13 @@
 .sProjectTopBar {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
+}
+.sProjectBtns {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
 }
 .sProjectTopBar button {
   padding: 1em 2em;
@@ -74,4 +80,14 @@
   border: 1px solid blueviolet;
   /* box-shadow: 2px 2px 10px blueviolet; */
   border-radius: 4px;
+}
+/* MEDIA QUERIES */
+@media (min-width: 767px) {
+  .sProjectTopBar {
+    flex-direction: row;
+  }
+  .sProjectBtns {
+    flex-direction: row;
+    column-gap: 1rem;
+  }
 }

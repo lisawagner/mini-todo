@@ -1,10 +1,8 @@
-import { Link } from 'react-router-dom'
 import ProjectBtn from './ProjectBtn';
 // styles
 import styles from './ProjectsList.module.css'
 
 const ProjectsList = ({ projects }) => {
-  console.log("Projects", projects);
 
   // If array empty, return this template
   if(projects.length === 0) {

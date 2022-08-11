@@ -3,7 +3,7 @@
 const TaskItem = ({ data, id }) => {
   return (
     <>
-      <button>{data}{id}</button>
+      <button>{data}</button>
     </>
   )
 }
