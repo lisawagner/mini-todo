@@ -16,7 +16,7 @@ Image of Site
 
 ## Project Specifications
 
-| <div style="width:290px">Behaviour</div> | Input | Output |
+| <div style="width:390px">Behaviour</div> | Input | Output |
 | ------------- |:-------------:| ---------:|
 | User visits projects page while data array is being populated. | N/A | Loading message displays for slower connections |
 | User visits projects page when there are no projects input. | N/A | Message: "Sorry, there are no projects to load. Please add your first project." |
