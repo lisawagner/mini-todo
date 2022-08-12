@@ -16,9 +16,9 @@ Image of Site
 
 ## Project Specifications
 
-| Behaviour &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | Input | Output |
+| Behaviour | Input | Output |
 | ------------- |:-------------:| ---------:|
-| User visits projects page while data array is being populated. | N/A | Loading message displays for slower connections |
+| User visits projects page while data array is being populated. | N/A | Loading message displays for slower connections &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|
 | User visits projects page when there are no projects input. | N/A | Message: "Sorry, there are no projects to load. Please add your first project." |
 | User types project name and selects 'Add Project' or 'enter key'| Text input: 'React Redux Project' | Loading message & error prompts are replaced with a project button 'React Redux Project' |
 | User types nothing and clicks 'Add Project' or presses 'enter key'| N/A | An error message prompts user to provide a project name |
