@@ -14,8 +14,8 @@ Structuring the data into two distinct collections works much better for this ca
 
 [Live Demo]()
 
-![Project Page Image](src\assets\projects-page.png "Mini-Todo App Project Page")
-![Single Project Page Image](src\assets\single-project.png "Mini-Todo App Single Project Page")
+![Project Page Image](src/assets/projects-page.png "Mini-Todo App Project Page")
+![Single Project Page Image](src/assets/single-project.png "Mini-Todo App Single Project Page")
 
 
 
