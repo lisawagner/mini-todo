@@ -23,7 +23,7 @@ const SingleProject = () => {
     // delete tasks related to the project first
     const q = query(collection(db, 'tasks'), where('projectId', '==', currentProject[0].id))
     const docSnap = await getDocs(q)
-    
+
     docSnap.forEach((doc) => {
       deleteDoc(doc.ref)
     })
