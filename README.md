@@ -8,7 +8,7 @@ This Mini-Todo app is a project management tool where users can add projects and
 
 The goal for this web app is to explore Firebase 9. Data was initially structured as one main collection with sub-collections. This proved difficult to query, as Firebase 9 does not inherently work well with nested data.
 
-Structuring the data into two distinct collections works much better for this app. The 'projects' collection is now separate and distinct from the 'tasks' collection. The 'tasks' are linked / associated with the correct project via a 'projectId'.
+Structuring the data into two distinct collections works much better for this case. The 'projects' collection is now separate and distinct from the 'tasks' collection. 'Tasks' are linked / associated with the correct project via a 'projectId'.
 
 ## Preview
 
@@ -16,7 +16,7 @@ Image of Site
 
 ## Project Specifications
 
-| Behaviour | Input | Output |
+| <div style="width:290px">Behaviour</div> | Input | Output |
 | ------------- |:-------------:| ---------:|
 | User visits projects page while data array is being populated. | N/A | Loading message displays for slower connections |
 | User visits projects page when there are no projects input. | N/A | Message: "Sorry, there are no projects to load. Please add your first project." |
