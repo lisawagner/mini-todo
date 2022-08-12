@@ -22,7 +22,7 @@ Image of Site
 | User clicks the project button | mouse click | User routed to project page with the project name, edit & delete buttons, plus a task list (empty initially) and an 'Add Task' button |
 | User types nothing into the Add Task input & clicks 'Add Project'| N/A | An error message prompt requests user to provide a task name |
 | User selects delete task icon| onClick | Task is deleted |
-| User selects eidt task icon| onClick | User prompted to enter new task name |
+| User selects edit task icon| onClick | User prompted to enter new task name |
 
 ## Setup / Installation Requirements
 
