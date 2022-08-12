@@ -3,9 +3,14 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 0.75rem;
+}
+.sProjectTopBar h1 {
+  margin: none;
 }
 .sProjectBtns {
   display: flex;
+
   flex-direction: column;
   row-gap: 1rem;
 }
@@ -36,12 +41,13 @@
   flex-wrap: wrap;
   column-gap: 1rem;
   row-gap: 1rem;
+
 }
 .taskItemWrap {
   display: flex;
   flex-direction: column;
   row-gap: 0.25rem;
-  padding: 1rem;
+  padding: 0.5rem;
   border-radius: 8px;
   border: 2px solid black;
 }
@@ -82,12 +88,16 @@
   border-radius: 4px;
 }
 /* MEDIA QUERIES */
-@media (min-width: 767px) {
-  .sProjectTopBar {
-    flex-direction: row;
-  }
+@media (min-width: 539px) {
   .sProjectBtns {
     flex-direction: row;
     column-gap: 1rem;
   }
+}
+@media (min-width: 767px) {
+  .sProjectTopBar {
+    flex-direction: row;
+    margin-bottom: 0.75rem;
+  }
+
 }

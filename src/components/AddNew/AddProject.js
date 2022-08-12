@@ -1,11 +1,12 @@
-import { addDoc, collection } from "@firebase/firestore";
 import { useRef } from "react";
+// firebase
+import { addDoc, collection } from "@firebase/firestore";
 import { db } from "../../firebase/firebase";
 // styles
 import styles from './AddNew.module.css'
 
 export default function AddProject({ database, title }) {
-  const name = useRef();
+  const name = useRef()
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -25,8 +26,10 @@ export default function AddProject({ database, title }) {
   return (
     <div className={styles.addNewWrap}>
       <form onSubmit={handleSubmit}>
-        <input ref={name}/>
-        <button type="submit">Add {title}</button>
+        <div className={styles.addNewInputWrap}>
+          <input ref={name}/>
+          <button type="submit">Add {title}</button>
+        </div>
       </form>
     </div>
   );

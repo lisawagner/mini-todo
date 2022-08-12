@@ -3,17 +3,23 @@
   margin: 1rem auto;
   width: 100%;
   justify-content: center;
+  align-items: center;
 }
-.addNewWrap form {
+.addNewWrap span {
+  display: flex;
+  justify-content: center;
+  font-style: italic;
+  margin: 0.5rem auto;
+}
+.addNewInputWrap {
   display: flex;
   flex-direction: column;
   row-gap: 0.25rem;
   width: 100%;
 }
-.addNewWrap input {
+.addNewInputWrap input {
   font-size: 1rem;
   line-height: 1.5rem;
-  
 }
 .addNewWrap button {
   color: white;
@@ -32,9 +38,9 @@
 }
 /* MEDIA QUERIES */
 @media (min-width: 539px) {
-  .addNewWrap form {
+  .addNewInputWrap {
     flex-direction: row;
     justify-content: center;
-    column-gap: 0.25rem;
+    column-gap: 0.5rem;
   }
 }
