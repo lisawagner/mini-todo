@@ -33,23 +33,31 @@ const SingleProject = () => {
     history('/projects')
   }
   const handleEdit = async () => {
-    const name = prompt("Enter new name: ", currentProject[0].name)
-    const docRef = doc(db, 'projects', currentProject[0].id)
-    const payload = { name }
-
-    await updateDoc(docRef, payload)
-    history('/projects')
+    let name
+    name = prompt("Enter new name: ", currentProject[0].name)
+    if(name === null || name === '') {
+      return
+    } else {
+      const docRef = doc(db, 'projects', currentProject[0].id)
+      const payload = { name }
+      await updateDoc(docRef, payload)
+      history('/projects')
+    }
   }
   const handleDeleteTask = async (taskId) => {
     const docRef = doc(db, 'tasks', taskId)
     await deleteDoc(docRef)
   }
   const handleEditTask = async (taskId, taskName) => {
-    const name = prompt("Enter new task: ", taskName)
-    
-    const docRef = doc(db, 'tasks', taskId)
-    const payload = { name }
-    await updateDoc(docRef, payload, { merge: true })
+    let name;
+    name = prompt("Enter new task: ", taskName)
+    if(name === null || name === '') {
+      return
+    } else {
+      const docRef = doc(db, 'tasks', taskId)
+      const payload = { name }
+      await updateDoc(docRef, payload, { merge: true })
+    }
   }
 
 
