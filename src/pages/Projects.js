@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 // firebase
 import { collection, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase/firebase'
@@ -18,7 +18,7 @@ const Projects = () => {
     // real time collection data
     const unsubscribe = onSnapshot(ref, (snapshot) => {
       if (snapshot.empty) {
-        setError('Sorry, there are no projects to load at the moment')
+        setError('Sorry, there are no projects to load. Please add your first project.')
         setIsPending(false)
       } else {
         let results = []
@@ -27,6 +27,7 @@ const Projects = () => {
         })
         setData(results)
         setIsPending(false)
+        setError('')
       }
     }, (err) => {
       setError(err.message)
@@ -34,6 +35,7 @@ const Projects = () => {
     })
 
     return () => unsubscribe()
+    
     
   }, [])
 
