@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'
 import { useProjectContext } from '../context/ProjectContext';
 // firebase
-import { collection, doc, deleteDoc, updateDoc, onSnapshot } from 'firebase/firestore';
+import { collection, doc, deleteDoc, updateDoc, onSnapshot, getDocs, where, query } from 'firebase/firestore';
 import { db } from '../firebase/firebase';
 // components
 import TaskItem from '../components/TaskItem/TaskItem';
@@ -11,7 +11,6 @@ import styles from './SingleProject.module.css'
 import { TbTrash, TbPencil } from "react-icons/tb";
 import AddTask from '../components/AddNew/AddTask';
 
-// redo to use doc.id
 const SingleProject = () => {
   const [tasks, setTasks] = useState(null)
   const [isPending, setIsPending] = useState(false)
@@ -21,6 +20,14 @@ const SingleProject = () => {
   const { currentProject } = useProjectContext()
 
   const handleDelete = async () => {
+    // delete tasks related to the project first
+    const q = query(collection(db, 'tasks'), where('projectId', '==', currentProject[0].id))
+    const docSnap = await getDocs(q)
+    
+    docSnap.forEach((doc) => {
+      deleteDoc(doc.ref)
+    })
+    // after deleting related tasks, delete project
     const docRef = doc(db, 'projects', currentProject[0].id)
     await deleteDoc(docRef)
     history('/projects')
@@ -29,6 +36,7 @@ const SingleProject = () => {
     const name = prompt("Enter new name: ", currentProject[0].name)
     const docRef = doc(db, 'projects', currentProject[0].id)
     const payload = { name }
+
     await updateDoc(docRef, payload)
     history('/projects')
   }
@@ -53,7 +61,7 @@ const SingleProject = () => {
     // real time collection data
     const unsubscribe = onSnapshot(ref, (snapshot) => {
       if (snapshot.empty) {
-        setError('Sorry, there are no tasks to load at the moment')
+        setError('Sorry, there are no tasks to load at the moment.')
         setIsPending(false)
       } else {
         let results = []
@@ -62,6 +70,7 @@ const SingleProject = () => {
         })
         setTasks(results)
         setIsPending(false)
+        setError('')
       }
     }, (err) => {
       setError(err.message)
@@ -81,6 +90,7 @@ const SingleProject = () => {
     return assignedToProject
   }) : null
 
+
   return (
     <div className={styles.sProjectWrap}>
       <div className={styles.sProjectTopBar}>
@@ -89,23 +99,38 @@ const SingleProject = () => {
           <button onClick={() => handleEdit()}>Edit Project</button>
           <button onClick={() => handleDelete()}>Delete Project</button>
         </div>
-        
       </div>
       <div className={styles.sProjectTaskWrap}>
         <div className={styles.sProjectTaskItem}>
 
-          {isPending && "Loading..."}
           {error && <p className='error'>{error}</p>}
-          {assignedTasks?.map(task => (
-            <div className={styles.taskItemWrap} key={Math.random()}>
-              <div className={styles.taskItemHeader}><TaskItem data={task.name} id={task.id}/></div>
-              <div className={styles.taskBtnsWrap}>
-                <button onClick={() => handleDeleteTask(task.id)} ><TbTrash /></button>
-                <button onClick={() => handleEditTask(task.id, task.name)}><TbPencil /></button>
+          {isPending && "Loading..."}
+          
+          {
+            assignedTasks?.length ?
+              assignedTasks?.map(task => (
+                <div className={styles.taskItemWrap} key={Math.random()}>
+                  <div className={styles.taskItemHeader}><TaskItem data={task.name} id={task.id}/></div>
+                  <div className={styles.taskBtnsWrap}>
+                    <button onClick={() => handleDeleteTask(task.id)} ><TbTrash /></button>
+                    <button onClick={() => handleEditTask(task.id, task.name)}><TbPencil /></button>
+                  </div>
+                </div>
+            )) : <p>Please add a task to your project</p>
+          }
+
+
+          {/* {assignedTasks?.map(task => (
+            <>
+              <div className={styles.taskItemWrap} key={Math.random()}>
+                <div className={styles.taskItemHeader}><TaskItem data={task.name} id={task.id}/></div>
+                <div className={styles.taskBtnsWrap}>
+                  <button onClick={() => handleDeleteTask(task.id)} ><TbTrash /></button>
+                  <button onClick={() => handleEditTask(task.id, task.name)}><TbPencil /></button>
+                </div>
               </div>
-              
-            </div>
-          ))}
+            </>
+          ))} */}
 
         </div>
         <div className={styles.addTaskWrap}>
