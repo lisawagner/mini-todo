@@ -1,23 +1,23 @@
 # Mini-Todo App
 
-*An application to practice using Firebase 9, August 2022.*
+*An application to practice using Firebase 9 Firestore, August 2022.*
 
 ## Description
 
 This Mini-Todo app is a project management tool where users can add projects and assign tasks to each project. Both the projects and tasks can be edited/updated and deleted.
 
-The goal for this web app is to explore Firebase 9. Data was initially structured as one main collection with sub-collections. This proved difficult to query, as Firebase 9 does not inherently work well with nested data.
+The goal for this web app is to explore Firebase 9 Firestore. Data was initially structured as one main collection with sub-collections. This proved difficult to query, as Firestore does not inherently work well with nested data.
 
 Structuring the data into two distinct collections works much better for this case. The 'projects' collection is now separate and distinct from the 'tasks' collection. 'Tasks' are linked / associated with the correct project via a 'projectId'.
 
 ## Preview
 
-[Live Demo]()
+[Live Demo](https://mini-todo-project.web.app "Live Demo")
 
-### *Projects Page*
+*Projects Page*
 ![Project Page Image](src/assets/projects-page.png "Mini-Todo App Project Page")
 
-### *Single Project Page*
+*Single Project Page*
 ![Single Project Page Image](src/assets/single-project.png "Mini-Todo App Single Project Page")
 
 
@@ -59,7 +59,8 @@ Structuring the data into two distinct collections works much better for this ca
 1. Firebase 9
 2. React 18
 3. React Router 6
-
+4. favicon.io for generating favicons
+5. react-icons
 
 ## License
 
