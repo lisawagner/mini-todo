@@ -33,10 +33,7 @@ const Projects = () => {
       setError(err.message)
       setIsPending(false)
     })
-
     return () => unsubscribe()
-    
-    
   }, [])
 
 

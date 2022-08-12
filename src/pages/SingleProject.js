@@ -32,6 +32,7 @@ const SingleProject = () => {
     await deleteDoc(docRef)
     history('/projects')
   }
+
   const handleEdit = async () => {
     let name
     name = prompt("Enter new name: ", currentProject[0].name)
@@ -44,10 +45,12 @@ const SingleProject = () => {
       history('/projects')
     }
   }
+
   const handleDeleteTask = async (taskId) => {
     const docRef = doc(db, 'tasks', taskId)
     await deleteDoc(docRef)
   }
+
   const handleEditTask = async (taskId, taskName) => {
     let name;
     name = prompt("Enter new task: ", taskName)
@@ -59,7 +62,6 @@ const SingleProject = () => {
       await updateDoc(docRef, payload, { merge: true })
     }
   }
-
 
   // Need to get 'tasks' collection!
   useEffect(() => {
@@ -84,9 +86,7 @@ const SingleProject = () => {
       setError(err.message)
       setIsPending(false)
     })
-
     return () => unsubscribe()
-    
   }, [])
 
   // create array of tasks assigned to project
@@ -97,7 +97,6 @@ const SingleProject = () => {
     }
     return assignedToProject
   }) : null
-
 
   return (
     <div className={styles.sProjectWrap}>
@@ -126,19 +125,6 @@ const SingleProject = () => {
                 </div>
             )) : <p>Please add a task to your project</p>
           }
-
-
-          {/* {assignedTasks?.map(task => (
-            <>
-              <div className={styles.taskItemWrap} key={Math.random()}>
-                <div className={styles.taskItemHeader}><TaskItem data={task.name} id={task.id}/></div>
-                <div className={styles.taskBtnsWrap}>
-                  <button onClick={() => handleDeleteTask(task.id)} ><TbTrash /></button>
-                  <button onClick={() => handleEditTask(task.id, task.name)}><TbPencil /></button>
-                </div>
-              </div>
-            </>
-          ))} */}
 
         </div>
         <div className={styles.addTaskWrap}>
