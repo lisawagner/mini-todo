@@ -36,8 +36,7 @@ This project was created with create-react-app.
 
 ## Known Bugs
 
-...
-When User cancels out prompt to edit task/project, it breaks the task/project
+~~When User cancels out prompt to edit task/project, it breaks the task/project~~ (fixed)
 
 ## Support and Contact Details
 
