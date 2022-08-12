@@ -30,7 +30,7 @@ This project was created with create-react-app.
 
 1. Download the repo and install the dependencies (npm i or yarn add)
 2. IMPORTANT: Add .env file to .gitignore if it is not already included
-3. Add a .env file with your firestore credentials. `REACT_APP_` is required as a prefix.
+3. Create a .env file with your firestore credentials. `REACT_APP_` is required as a prefix.
 4. In your terminal, type npm start to run in developer mode.
 
 
@@ -51,4 +51,6 @@ contact details
 
 ## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+[MIT](https://choosealicense.com/licenses/mit/)
+
+Copyright (c) 2022 Lisa Wagner
