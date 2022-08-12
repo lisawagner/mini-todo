@@ -1,14 +1,13 @@
-import { Link } from "react-router-dom"
 
 const Home = () => {
   return (
     <>
       <h1>MINI-TODO | Firebase 9 Experiment</h1>
       <h2>Goal</h2>
-      <p>To explore CRUD operations in Firebase 9</p>
+      <p>To explore CRUD operations in Firebase 9 Firestore</p>
       <h2>App Concept</h2>
       <p>For functionality, the user can Create, Read, Update and Delete Projects, plus create tasks for each project. The task items are in the 'tasks' collection and can also be updated/deleted.</p>
-      <p><Link to={{ pathname: "https://github.com/lisawagner/mini-todo" }} target="_blank">GitHub Repo</Link></p>
+      <p><a href="https://github.com/lisawagner/mini-todo" target="_blank">GitHub Repo</a></p>
       <h2>Tech</h2>
       <ul>
         <li>Firebase 9</li>
