@@ -18,11 +18,11 @@ Image of Site
 
 | Behaviour | Input | Output |
 | ------------- |:-------------:| ---------:|
-| User visits projects page while data array is being populated. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | N/A | Loading message displays for slower connections|
+| User visits projects page while data array is being populated. | N/A | Loading message displays for slower connections|
 | User visits projects page when there are no projects input. | N/A | Message: "Sorry, there are no projects to load. Please add your first project." |
 | User types project name and selects 'Add Project' or 'enter key'| Text input: 'React Redux Project' | Loading message & error prompts are replaced with a project button 'React Redux Project' |
 | User types nothing and clicks 'Add Project' or presses 'enter key'| N/A | An error message prompts user to provide a project name |
-| User clicks the project button | onClick | User routed to project page with the project name, edit & delete buttons, plus a task list (empty initially) and an 'Add Task' button |
+| User clicks the project button | onClick | User routed to project page |
 | User types nothing into the Add Task input & clicks 'Add Project'| N/A | An error message prompts user to provide a task name |
 | User selects delete task icon| onClick | Task is deleted |
 | User selects edit task icon| onClick | User prompted to enter new task name |
