@@ -14,11 +14,11 @@ Image of Site
 ## Project Specifications
 
 | Behaviour | Input | Output |
-| ------------- |:-------------:| -----:|
+| ------------- |:-------------:| ---------:|
 | User visits projects page while data array is being populated. | N/A | A loading message displays for slower connections |
 | User visits projects page when there are no projects input. | N/A | A message: "Sorry, there are no projects to load. Please add your first project." |
-| User types project name and selects `Add Project` or 'enter key'| Text input: 'React Redux Project' | The loading message and error prompts are replaced with a project button `React Redux Project` |
-| User clicks the project button | mouse click | User routed to project page with the project name, edit & delete buttons, plus a task list (empty initially) and an `add task` button |
+| User types project name and selects 'Add Project' or 'enter key'| Text input: 'React Redux Project' | The loading message and error prompts are replaced with a project button 'React Redux Project' |
+| User clicks the project button | mouse click | User routed to project page with the project name, edit & delete buttons, plus a task list (empty initially) and an 'Add Task' button |
 
 ## Setup / Installation Requirements
 
